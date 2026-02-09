@@ -10,22 +10,15 @@
   --color-gold-light: #f4e4c1;
 
   /* Enhanced Flower Themes */
-  /* Midnight Peony - Moody, romantic, expensive */
   --color-midnight-forest: #1A2F23;
   --color-soft-peony: #E6AACE;
   --color-peony-dark: #C48BA8;
-
-  /* Vintage Ranunculus - Antique, warm, sentimental */
   --color-old-lace: #FDF5E6;
   --color-sepia-stem: #8B4513;
-  --color-vintage-cream: #F5E6D3;
-
-  /* White Jasmine - Royal, clean, minimalist luxury */
   --color-pure-white: #FFFFFF;
   --color-antique-gold: #D4AF37;
-  --color-jasmine-green: #E8F5E9;
 
-  /* Custom Animations for Motion */
+  /* Custom Animations */
   @keyframes bloom {
     0% {
       transform: scale(0.8) translateY(10px);
@@ -71,15 +64,10 @@
   --animate-float: float 6s ease-in-out infinite;
 }
 
+/* Import fonts AFTER tailwind but BEFORE your custom layers */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,400&family=Inter:wght@300..600&display=swap');
 
 @layer base {
-  * {
-    /* This now points to the variable defined in @theme */
-    border-color: var(--color-gold);
-    border-opacity: 0.2;
-  }
-
   body {
     background: linear-gradient(180deg, #0a1628 0%, #1a2f3f 50%, #0f1e2e 100%);
     color: var(--color-cream-light);
@@ -98,6 +86,10 @@
 }
 
 @layer utilities {
+  .grain-filter {
+    position: relative;
+  }
+
   .grain-filter::before {
     content: '';
     position: absolute;
@@ -114,12 +106,13 @@
   }
 }
 
-/* Custom Cursor */
+/* Fixed Custom Cursor Classes */
 .cursor-dot {
   position: fixed;
   width: 8px;
   height: 8px;
-  background: var(--color-gold);
+  background-color: #d4af37;
+  /* Using direct hex for reliability in cursors */
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
